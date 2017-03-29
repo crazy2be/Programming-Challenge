@@ -126,6 +126,6 @@ $(document).ready(function(){
 	});
 
 	code.addEventListener('input', (ev) => {
-		$('#chars').html(code.value.length);
+		$('#chars').html(length(code.value));
 	});
 });
