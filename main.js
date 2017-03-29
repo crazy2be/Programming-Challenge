@@ -23,15 +23,13 @@ function displayCells() {
 
 function length(input) {
 	var res = 0;
+	var inComment = false;
 	for (i = 0; i < input.length; i++) {
-		if (input.charAt(i) == '+' ||
-			input.charAt(i) == '-' ||
-			input.charAt(i) == '<' ||
-			input.charAt(i) == '>' ||
-			input.charAt(i) == '[' ||
-			input.charAt(i) == ']' )
-
-			res++;
+		var c = input.charAt(i);
+		if (inComment) {
+			if (c == '\n') { inComment = false; }
+		} else if (c == '#') { inComment = true;
+		} else if ("+-<>[]".includes(c)) { res++; }
 	}
 	return res;
 }
