@@ -65,7 +65,7 @@ function processCode(input) {
 			case '.':
 				numPrinted++;
 				if (numPrinted <= 100) {
-					print("Output (cell ", pointer, "): ", cells[pointer]);
+					print("Output (character ", loc, ", cell ", pointer, "): ", cells[pointer]);
 				}
 				break;
 			case '+':
