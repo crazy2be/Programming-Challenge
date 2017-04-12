@@ -1,0 +1,14 @@
+
+Obtain 15 using 14 characters
++++[->+++++<]> # And similar, can go different directions and swap 3/5 and +/- order. (8 total permutations).
+[[->++<]>><]>- # Basically bonus
+
+Put 10 in each cell using 40 characters
+<<<+++++ ++[[>]+++++ +++++[<]>-]+++++ +++++ < +++++ +++++ # Too long, 51 chars
++>+>+>+<<<<+<+<+<+[+++++++++>]++++++++++ # Works
+
+How big of a number can you get using 30 characters?
+<<<<[[->+++++ +++++ +++++<]>><]> # 15 ^ 8, or 2,562,890,625
+
+BONUS CHALLENGE: Obtain 16 using 13 characters
+[[->++<]>><]>
