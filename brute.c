@@ -27,6 +27,8 @@ bool program_valid(const char *prog) {
 		if (prog[i] == '[') balance++;
 		if (prog[i] == ']') balance--;
 		if (balance < 0) return false;
+		// +] will never result in a terminating loop.
+		if ((prog[i] == ']') && (i > 0) && (prog[i - 1] == '+')) return false;
 	}
 	return true;
 }
@@ -114,7 +116,7 @@ int main() {
 		if (res >= 10) {
 			printf("PROMISING: prog %s, %d\n", prog, res);
 		}
-		if ((i & 0xFFFF) == 0) {
+		if ((i & 0x3FFFF) == 0) {
 			printf("Iteration %d...\n", i);
 		}
 		chain = next_prog(prog);
