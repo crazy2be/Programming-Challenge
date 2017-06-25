@@ -120,7 +120,7 @@ int main() {
 		printf("Test %d ('%s'): %d, expected %d\n", i, tests[i].prog,
 			   interpret(tests[i].prog), tests[i].res);
 	}
-	char prog[10] = "++++++++++";
+	char prog[] = "++++++++++";
 	bool chain = false;
 	int i = 0;
 	while (!chain) {
