@@ -27,8 +27,20 @@ bool program_valid(const char *prog) {
 		if (prog[i] == '[') balance++;
 		if (prog[i] == ']') balance--;
 		if (balance < 0) return false;
-		// +] will never result in a terminating loop.
-		if ((prog[i] == ']') && (i > 0) && (prog[i - 1] == '+')) return false;
+                if (i >= 1) {
+                    // +] will never result in a terminating loop.
+                    if ((prog[i] == ']') && (prog[i - 1] == '+')) return false;
+                    // [] is always a noop, if we are searching for short
+                    // programs, we have no use for these.
+                    if ((prog[i] == ']') && (prog[i - 1] == '[')) return false;
+                    // +- is always a noop.
+                    if ((prog[i] == '-') && (prog[i - 1] == '+')) return false;
+                }
+                // Invalid 2-character loops. Both [<>] and [><] are noops.
+                if ((i >= 4) && (prog[i] == ']') && (prog[i - 3] == '[')) {
+                    if ((prog[i - 1] == '>') && (prog[i - 2] == '<')) return false;
+                    if ((prog[i - 1] == '<') && (prog[i - 2] == '>')) return false;
+                }
 	}
 	return true;
 }
